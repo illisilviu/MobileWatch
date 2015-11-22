@@ -111,4 +111,5 @@
   <preference name="InAppBrowserStorageEnabled" value="True" />
   <preference name="SuppressesIncrementalRendering" value="True" />
   <vs:plugin name="cordova-plugin-geolocation" version="1.0.1" />
+  <vs:plugin name="nl.x-services.plugins.headsetdetection" version="1.0" src="https://github.com/EddyVerbruggen/HeadsetDetection-PhoneGap-Plugin.git" />
 </widget>
