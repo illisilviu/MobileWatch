@@ -13,76 +13,35 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 
     <link href="css/ionic.css" rel="stylesheet" />
+    <link href="css/index.css" rel="stylesheet" />
 
     <script src="scripts/ionic.bundle.js"></script>
+    <script src="scripts/ng-cordova.js"></script>
     <script src="scripts/app.js"></script>
 
     <!-- Needed for Cordova/PhoneGap (will be a 404 during development) -->
     <script src="cordova.js"></script>
-    <script src="scripts/platformOverrides.js"></script>
+    <!--<script src="scripts/platformOverrides.js"></script>-->
 </head>
-<body ng-app="MobileWatch" ng-controller="MobileWatchCtrl">
-    <ion-side-menus>
-        <!-- Center content -->
-        <ion-side-menu-content>
-            <ion-header-bar class="bar-dark">
-                <button class="button button-icon" ng-click="toggleDistricts()">
+<body ng-app="MobileWatch">
+    <ion-pane>
+        <ion-header-bar align-title="left" class="bar-balanced">
+            <div class="buttons">
+                <button class="button button-icon">
                     <i class="icon ion-navicon"></i>
                 </button>
-                <h1 class="title">{{activeDistrict.title}}</h1>
-                <!-- New Event button-->
-                <button class="button button-icon" ng-click="newEvent()">
+            </div>
+            <h1 class="title">MobileWatch</h1>
+            <div class="buttons">
+                <button class="button button-icon">
                     <i class="icon ion-compose"></i>
                 </button>
-            </ion-header-bar>
-            <ion-content scroll="false">
-                <!-- our list and list items -->
-                <ion-list>
-                    <ion-item ng-repeat="event in activeDistrict.events">
-                        {{event.title}}
-                    </ion-item>
-                </ion-list>
-            </ion-content>
-        </ion-side-menu-content>
+            </div>
+        </ion-header-bar>
+        <ion-nav-view></ion-nav-view>
+    </ion-pane>
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyBhlk_gVm76uAJ6CLMxaHQfoNnbM6Xxu88&sensor=true"></script>
 
-        <!-- Left menu -->
-        <ion-side-menu side="left">
-            <ion-header-bar class="bar-dark">
-                <h1 class="title">Districts</h1>
-                <button class="button button-icon ion-plus" ng-click="newDistrict()"></button>
-            </ion-header-bar>
-            <ion-content scroll="false">
-                <ion-list>
-                    <ion-item ng-repeat="district in districts" ng-click="selectDistrict(district, $index)" ng-class="{active: activeDistrict == district}">
-                        {{district.title}}
-                    </ion-item>
-                </ion-list>
-            </ion-content>
-        </ion-side-menu>
-
-    </ion-side-menus>
-
-    <script id="new-event.html" type="text/ng-template">
-        <div class="modal">
-            <!-- Modal header bar -->
-            <ion-header-bar class="bar-secondary">
-                <h1 class="title">New Event</h1>
-                <button class="button button-clear button-positive" ng-click="closeNewEvent()">Cancel</button>
-            </ion-header-bar>
-            <!-- Modal content area -->
-            <ion-content>
-                <form ng-submit="createEvent(event)">
-                    <div class="list">
-                        <label class="item item-input">
-                            <input type="text" placeholder="What happened to you?" ng-model="event.title">
-                        </label>
-                    </div>
-                    <div class="padding">
-                        <button type="submit" class="button button-block button-positive">Create Event</button>
-                    </div>
-                </form>
-            </ion-content>
-        </div>
-    </script>
+    <!--<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBhlk_gVm76uAJ6CLMxaHQfoNnbM6Xxu88&sensor=true"></script>-->
 </body>
 </html>
